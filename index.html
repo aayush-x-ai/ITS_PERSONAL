@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Mansi — Some Stories Begin With A Single Glance</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loader">
+    <div class="loader-mountains">
+      <!-- SVG Mountain Scene -->
+      <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" class="loader-svg">
+        <!-- Sky gradient -->
+        <defs>
+          <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#87CEEB"/>
+            <stop offset="100%" style="stop-color:#E0F4FF"/>
+          </linearGradient>
+          <linearGradient id="mtn1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#3a6b3a"/>
+            <stop offset="100%" style="stop-color:#1a3a1a"/>
+          </linearGradient>
+          <linearGradient id="mtn2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#4a8b4a"/>
+            <stop offset="100%" style="stop-color:#2a5a2a"/>
+          </linearGradient>
+          <linearGradient id="mtn3" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#5dab5d"/>
+            <stop offset="100%" style="stop-color:#3a7a3a"/>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="400" fill="url(#skyGrad)"/>
+        <!-- Far mountains -->
+        <polygon points="0,400 150,150 300,400" fill="#6aaa6a" opacity="0.5"/>
+        <polygon points="100,400 300,100 500,400" fill="url(#mtn1)"/>
+        <polygon points="300,400 500,120 700,400" fill="url(#mtn2)"/>
+        <polygon points="500,400 750,80 1000,400" fill="url(#mtn1)"/>
+        <polygon points="700,400 950,110 1200,400" fill="url(#mtn3)"/>
+        <polygon points="900,400 1100,140 1200,400" fill="url(#mtn2)" opacity="0.8"/>
+        <!-- Snow caps -->
+        <polygon points="300,100 320,140 280,140" fill="white" opacity="0.8"/>
+        <polygon points="750,80 775,125 725,125" fill="white" opacity="0.9"/>
+        <!-- Green trees row -->
+        <rect x="0" y="360" width="1200" height="40" fill="#2d6a2d"/>
+      </svg>
+      <!-- Clouds in loader -->
+      <div class="loader-cloud c1"></div>
+      <div class="loader-cloud c2"></div>
+      <div class="loader-cloud c3"></div>
+    </div>
+    <div class="loader-text">
+      <div class="loader-title">Loading your story...</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== PAGE 1: OPENING / HERO ========== -->
+  <section id="page1" class="page hero-page">
+    <!-- 3D Sky + Mountains Canvas -->
+    <canvas id="heroCanvas"></canvas>
+
+    <!-- Floating Birds -->
+    <div class="birds-container" id="birdsContainer"></div>
+
+    <!-- Clouds Layer -->
+    <div class="clouds-layer">
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
+      <div class="cloud cloud-5"></div>
+    </div>
+
+    <!-- 3D Mountain Layers (CSS 3D) -->
+    <div class="mountain-scene" id="mountainScene">
+      <div class="mountain-layer layer-far">
+        <svg viewBox="0 0 1400 500" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="farMtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#7dc47d"/>
+              <stop offset="100%" style="stop-color:#3a6b3a"/>
+            </linearGradient>
+          </defs>
+          <polygon points="0,500 200,180 400,500" fill="url(#farMtnGrad)" opacity="0.6"/>
+          <polygon points="200,500 450,120 700,500" fill="url(#farMtnGrad)" opacity="0.7"/>
+          <polygon points="500,500 800,90 1100,500" fill="url(#farMtnGrad)" opacity="0.65"/>
+          <polygon points="800,500 1100,140 1400,500" fill="url(#farMtnGrad)" opacity="0.7"/>
+          <!-- Snow -->
+          <polygon points="450,120 480,165 420,165" fill="white" opacity="0.85"/>
+          <polygon points="800,90 840,145 760,145" fill="white" opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="mountain-layer layer-mid">
+        <svg viewBox="0 0 1400 500" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="midMtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a8b4a"/>
+              <stop offset="100%" style="stop-color:#1e4d1e"/>
+            </linearGradient>
+          </defs>
+          <polygon points="0,500 300,200 600,500" fill="url(#midMtnGrad)"/>
+          <polygon points="400,500 700,140 1000,500" fill="url(#midMtnGrad)"/>
+          <polygon points="750,500 1050,170 1400,500" fill="url(#midMtnGrad)"/>
+          <!-- Snow -->
+          <polygon points="700,140 730,190 670,190" fill="white" opacity="0.9"/>
+          <polygon points="1050,170 1080,215 1020,215" fill="white" opacity="0.85"/>
+        </svg>
+      </div>
+      <div class="mountain-layer layer-near">
+        <svg viewBox="0 0 1400 500" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="nearMtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#2d6b2d"/>
+              <stop offset="100%" style="stop-color:#0f330f"/>
+            </linearGradient>
+          </defs>
+          <polygon points="0,500 250,250 500,500" fill="url(#nearMtnGrad)"/>
+          <polygon points="600,500 950,180 1400,500" fill="url(#nearMtnGrad)"/>
+          <!-- Pine tree silhouettes -->
+          <g fill="#1a4d1a">
+            <polygon points="50,500 65,460 80,500"/>
+            <polygon points="90,500 108,455 126,500"/>
+            <polygon points="130,500 150,448 170,500"/>
+            <polygon points="200,500 222,440 244,500"/>
+            <polygon points="1100,500 1120,455 1140,500"/>
+            <polygon points="1150,500 1172,448 1194,500"/>
+            <polygon points="1200,500 1225,440 1250,500"/>
+            <polygon points="1270,500 1295,455 1320,500"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Foreground grass -->
+      <div class="foreground-grass"></div>
+    </div>
+
+    <!-- Sun / Light rays -->
+    <div class="sun-container">
+      <div class="sun"></div>
+      <div class="sun-rays">
+        <div class="ray r1"></div><div class="ray r2"></div>
+        <div class="ray r3"></div><div class="ray r4"></div>
+        <div class="ray r5"></div><div class="ray r6"></div>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content glass-card">
+      <div class="title-tag">✦ A Story Worth Telling ✦</div>
+      <h1 class="hero-title">"Some Stories Begin<br/>With A Single Glance"</h1>
+      <p class="hero-sub typewriter" id="typewriterText"></p>
+      <button class="begin-btn" id="beginBtn" onclick="goToPage(2)">
+        <span class="btn-text">Begin The Journey</span>
+        <span class="btn-icon">↓</span>
+      </button>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint">Scroll or tap to explore</div>
+  </section>
+
+
+  <!-- ========== PAGE 2: THE STORY ========== -->
+  <section id="page2" class="page story-page">
+    <!-- Forest/nature background -->
+    <div class="story-bg">
+      <div class="forest-layer f1"></div>
+      <div class="forest-layer f2"></div>
+      <div class="forest-layer f3"></div>
+      <!-- Floating particles -->
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Floating clouds on story page too -->
+    <div class="story-clouds">
+      <div class="s-cloud sc1"></div>
+      <div class="s-cloud sc2"></div>
+    </div>
+
+    <!-- SECTION 1: First Sight -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">01</div>
+      <div class="section-card glass-story">
+        <div class="scene bus-scene">
+          <div class="road">
+            <div class="road-line"></div>
+          </div>
+          <div class="bus" id="busAnim">
+            <div class="bus-body">
+              <div class="bus-window w1"></div>
+              <div class="bus-window w2 highlight"></div>
+              <div class="bus-window w3"></div>
+              <div class="bus-wheel bw1"></div>
+              <div class="bus-wheel bw2"></div>
+            </div>
+          </div>
+          <div class="mountain-mini">
+            <svg viewBox="0 0 400 150"><polygon points="0,150 100,40 200,150" fill="#4a8b4a"/><polygon points="150,150 260,20 370,150" fill="#3a7a3a"/><polygon points="260,20 280,50 240,50" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="story-text">
+          <h2 class="section-title">The First Sight</h2>
+          <p>"The first time I saw you was in our college bus.</p>
+          <p>It wasn't a normal moment.</p>
+          <p>I don't know why, but something inside me said,</p>
+          <em>"If she doesn't become part of my life, something will always feel incomplete."</em>
+          <p>From that day, mornings became special.</p>
+          <p>Not because of college.</p>
+          <p class="highlight-line">Because there was a chance I might see you."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Searching For You -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">02</div>
+      <div class="section-card glass-story reverse">
+        <div class="story-text">
+          <h2 class="section-title">Searching For You</h2>
+          <p>"I started looking for you everywhere.</p>
+          <p>In college corridors. In crowded places. On social media.</p>
+          <p>I searched for your profile again and again.</p>
+          <p class="highlight-line">But somehow fate kept hiding you from me."</p>
+        </div>
+        <div class="scene forest-trail-scene">
+          <div class="trail-path">
+            <div class="footstep fs1">👣</div>
+            <div class="footstep fs2">👣</div>
+            <div class="footstep fs3">👣</div>
+            <div class="footstep fs4">👣</div>
+          </div>
+          <div class="forest-silhouette">
+            <svg viewBox="0 0 300 200">
+              <polygon points="20,200 45,120 70,200" fill="#1a4d1a"/>
+              <polygon points="60,200 90,100 120,200" fill="#2d6b2d"/>
+              <polygon points="120,200 155,80 190,200" fill="#1a4d1a"/>
+              <polygon points="180,200 215,110 250,200" fill="#2d6b2d"/>
+              <polygon points="240,200 270,130 300,200" fill="#1a4d1a"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Unexpected Connection -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">03</div>
+      <div class="section-card glass-story">
+        <div class="scene evening-walk-scene">
+          <div class="walk-path"></div>
+          <div class="walker-silhouette">
+            <div class="walker" id="walkerAnim">🚶</div>
+          </div>
+          <div class="evening-trees">
+            <svg viewBox="0 0 300 180">
+              <rect x="0" y="0" width="300" height="180" fill="none"/>
+              <circle cx="60" cy="60" r="45" fill="#2d6b2d"/>
+              <rect x="52" y="100" width="16" height="80" fill="#5d3a1a"/>
+              <circle cx="180" cy="50" r="55" fill="#3a7a3a"/>
+              <rect x="172" y="100" width="16" height="80" fill="#5d3a1a"/>
+              <circle cx="270" cy="70" r="40" fill="#4a8b4a"/>
+              <rect x="262" y="105" width="16" height="75" fill="#5d3a1a"/>
+            </svg>
+          </div>
+        </div>
+        <div class="story-text">
+          <h2 class="section-title">The Unexpected Connection</h2>
+          <p>"Then I discovered that you lived in the same area.</p>
+          <p>Every evening walk became a little adventure.</p>
+          <p>Maybe today I would see you.</p>
+          <em>Maybe today destiny would be kind.</em>
+          <p class="highlight-line">And every glimpse felt like winning a lottery."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Disappearing Chapter -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">04</div>
+      <div class="section-card glass-story reverse fog-section">
+        <div class="story-text">
+          <h2 class="section-title">The Disappearing Chapter</h2>
+          <p>"And then suddenly...</p>
+          <em class="big-em">You disappeared.</em>
+          <p>Days became weeks.</p>
+          <p>Weeks became months.</p>
+          <p>Around one to three months passed.</p>
+          <p class="highlight-line">And I wondered if I would ever see you again."</p>
+        </div>
+        <div class="scene fog-scene">
+          <div class="fog-layer fog1"></div>
+          <div class="fog-layer fog2"></div>
+          <div class="silhouette-fade">
+            <svg viewBox="0 0 200 300">
+              <ellipse cx="100" cy="60" rx="35" ry="40" fill="#555" opacity="0.6"/>
+              <rect x="70" y="95" width="60" height="120" rx="10" fill="#555" opacity="0.5"/>
+              <rect x="55" y="100" width="20" height="80" rx="8" fill="#555" opacity="0.4"/>
+              <rect x="125" y="100" width="20" height="80" rx="8" fill="#555" opacity="0.4"/>
+              <rect x="75" y="210" width="22" height="90" rx="8" fill="#555" opacity="0.4"/>
+              <rect x="103" y="210" width="22" height="90" rx="8" fill="#555" opacity="0.4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Garba Night -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">05</div>
+      <div class="section-card glass-story garba-section">
+        <div class="scene garba-scene">
+          <div class="garba-lights">
+            <div class="g-light gl1"></div>
+            <div class="g-light gl2"></div>
+            <div class="g-light gl3"></div>
+            <div class="g-light gl4"></div>
+            <div class="g-light gl5"></div>
+          </div>
+          <div class="dancers">
+            <span class="dancer d1">💃</span>
+            <span class="dancer d2">🕺</span>
+            <span class="dancer d3">💃</span>
+          </div>
+        </div>
+        <div class="story-text">
+          <h2 class="section-title">The Garba Night</h2>
+          <p>"Then came the Garba event.</p>
+          <em>And there you were.</em>
+          <p>Standing only a few steps away.</p>
+          <p>My heart kept saying: <em>'Go talk to her.'</em></p>
+          <p>But my courage never arrived.</p>
+          <p>That night I smiled because I saw you.</p>
+          <p class="highlight-line">And regretted it because I said nothing."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: DJ Night -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">06</div>
+      <div class="section-card glass-story reverse dj-section">
+        <div class="story-text">
+          <h2 class="section-title">The Second Missed Chance</h2>
+          <p>"Life gave me another opportunity.</p>
+          <p>A DJ event. Again, you appeared.</p>
+          <p>Again, I wanted to speak.</p>
+          <em>Again, I lost my courage.</em>
+          <p class="highlight-line">And before I knew it... you disappeared into the crowd."</p>
+        </div>
+        <div class="scene dj-scene">
+          <div class="dj-lights">
+            <div class="dj-beam b1"></div>
+            <div class="dj-beam b2"></div>
+            <div class="dj-beam b3"></div>
+          </div>
+          <div class="crowd-silhouette">
+            <svg viewBox="0 0 300 150">
+              <ellipse cx="30" cy="140" rx="18" ry="50" fill="#333" opacity="0.7"/>
+              <ellipse cx="70" cy="135" rx="18" ry="55" fill="#333" opacity="0.6"/>
+              <ellipse cx="110" cy="130" rx="18" ry="60" fill="#333" opacity="0.8"/>
+              <ellipse cx="150" cy="125" rx="18" ry="65" fill="#555" opacity="0.9"/>
+              <ellipse cx="190" cy="130" rx="18" ry="60" fill="#333" opacity="0.7"/>
+              <ellipse cx="230" cy="135" rx="18" ry="55" fill="#333" opacity="0.6"/>
+              <ellipse cx="270" cy="140" rx="18" ry="50" fill="#333" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: Realization -->
+    <div class="story-section" data-aos="fade-up">
+      <div class="section-number">07</div>
+      <div class="section-card glass-story">
+        <div class="scene peak-scene">
+          <svg viewBox="0 0 400 250">
+            <defs>
+              <linearGradient id="peakSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF7F50"/>
+                <stop offset="100%" style="stop-color:#FFD700"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="250" fill="url(#peakSky)" opacity="0.3"/>
+            <polygon points="50,250 200,60 350,250" fill="#2d6b2d"/>
+            <polygon points="200,60 225,110 175,110" fill="white" opacity="0.9"/>
+            <!-- Person silhouette on peak -->
+            <circle cx="200" cy="55" r="6" fill="#333"/>
+            <rect x="197" y="60" width="6" height="18" fill="#333"/>
+          </svg>
+        </div>
+        <div class="story-text">
+          <h2 class="section-title">The Realization</h2>
+          <p>"Some opportunities don't wait forever.</p>
+          <p>And I finally realized that.</p>
+          <p>You got a job in another city.</p>
+          <em>Life was moving forward.</em>
+          <p>And suddenly I understood something:</p>
+          <p class="highlight-line">The biggest regret is not rejection.<br/>The biggest regret is never expressing what your heart wanted to say."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== WHY YOU — Cards ===== -->
+    <div class="why-you-section" data-aos="fade-up">
+      <h2 class="section-title center-title">Why You, <span class="name-highlight">Mansi</span></h2>
+      <div class="cards-grid">
+        <div class="nature-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card-icon">🌿</div>
+          <p>Your love for nature inspires me</p>
+        </div>
+        <div class="nature-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card-icon">🕊️</div>
+          <p>Your presence brings peace</p>
+        </div>
+        <div class="nature-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="card-icon">✨</div>
+          <p>Your smile brightens ordinary moments</p>
+        </div>
+        <div class="nature-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="card-icon">🦋</div>
+          <p>You taught me the value of courage without even knowing it</p>
+        </div>
+        <div class="nature-card" data-aos="zoom-in" data-aos-delay="500">
+          <div class="card-icon">💚</div>
+          <p>You made me believe in genuine feelings</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== PAGE 3: THE CONFESSION (EVENING/SUNSET THEME) ========== -->
+  <section id="page3" class="page confession-page">
+
+    <!-- Sunset Mountain Background -->
+    <div class="sunset-bg">
+      <!-- Animated sunset sky -->
+      <div class="sunset-sky"></div>
+
+      <!-- Mountains at sunset -->
+      <div class="sunset-mountains">
+        <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="sunsetSky" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#0d1b4b"/>
+              <stop offset="30%" style="stop-color:#4a1c6e"/>
+              <stop offset="60%" style="stop-color:#c0392b"/>
+              <stop offset="80%" style="stop-color:#e67e22"/>
+              <stop offset="100%" style="stop-color:#f39c12"/>
+            </linearGradient>
+            <linearGradient id="sunsetMtn1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#1a0a2e"/>
+              <stop offset="100%" style="stop-color:#0d0517"/>
+            </linearGradient>
+            <linearGradient id="sunsetMtn2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#2d1b4e"/>
+              <stop offset="100%" style="stop-color:#1a0a2e"/>
+            </linearGradient>
+            <radialGradient id="sunGlow" cx="50%" cy="60%" r="30%">
+              <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1"/>
+              <stop offset="40%" style="stop-color:#FF8C00;stop-opacity:0.8"/>
+              <stop offset="100%" style="stop-color:#FF4500;stop-opacity:0"/>
+            </radialGradient>
+          </defs>
+          <!-- Sky -->
+          <rect width="1400" height="600" fill="url(#sunsetSky)"/>
+          <!-- Sun glow -->
+          <ellipse cx="700" cy="320" rx="300" ry="200" fill="url(#sunGlow)" opacity="0.7"/>
+          <!-- Sun -->
+          <circle cx="700" cy="340" r="55" fill="#FFD700" opacity="0.9"/>
+          <circle cx="700" cy="340" r="45" fill="#FFA500"/>
+          <!-- Far mountains -->
+          <polygon points="0,600 250,250 500,600" fill="url(#sunsetMtn2)" opacity="0.7"/>
+          <polygon points="300,600 600,180 900,600" fill="url(#sunsetMtn1)"/>
+          <polygon points="700,600 1000,220 1400,600" fill="url(#sunsetMtn2)"/>
+          <polygon points="1000,600 1200,280 1400,600" fill="url(#sunsetMtn1)" opacity="0.8"/>
+          <!-- Snow with orange tint -->
+          <polygon points="600,180 635,235 565,235" fill="#ffe4b5" opacity="0.8"/>
+          <polygon points="1000,220 1030,270 970,270" fill="#ffe4b5" opacity="0.7"/>
+          <!-- Silhouette pine trees -->
+          <g fill="#0a0014">
+            <polygon points="0,600 20,555 40,600"/>
+            <polygon points="50,600 75,545 100,600"/>
+            <polygon points="110,600 140,535 170,600"/>
+            <polygon points="1200,600 1225,545 1250,600"/>
+            <polygon points="1260,600 1290,535 1320,600"/>
+            <polygon points="1330,600 1355,555 1380,600"/>
+          </g>
+          <!-- Ground -->
+          <rect x="0" y="570" width="1400" height="30" fill="#0a0014"/>
+        </svg>
+      </div>
+
+      <!-- Sunset clouds -->
+      <div class="sunset-cloud sc-a"></div>
+      <div class="sunset-cloud sc-b"></div>
+      <div class="sunset-cloud sc-c"></div>
+
+      <!-- Fireflies -->
+      <div class="fireflies" id="fireflies"></div>
+    </div>
+
+    <!-- The Truth Section -->
+    <div class="confession-content">
+      <div class="truth-section" data-aos="fade-up">
+        <div class="section-number light">08</div>
+        <div class="truth-card glass-sunset">
+          <h2 class="section-title golden">The Truth</h2>
+          <div class="truth-text">
+            <p>"I don't know if destiny has written our names together.</p>
+            <p>I don't know what your answer will be.</p>
+            <p>But I know one thing.</p>
+            <em>You became the reason I looked forward to ordinary days.</em>
+            <p>A simple glimpse of you could improve my entire mood.</p>
+            <p>You never knew it.</p>
+            <p class="highlight-line golden-line">But you became an important chapter in my story."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Final Confession -->
+      <div class="final-confession" data-aos="fade-up">
+        <div class="confession-card glass-sunset">
+          <div class="name-reveal">
+            <span class="dear-text">Dear</span>
+            <span class="mansi-name">Mansi</span>
+            <span class="heart-beat">💛</span>
+          </div>
+          <div class="confession-lines" id="confessionLines">
+            <p class="conf-line" style="--d:0.2s">"So today...</p>
+            <p class="conf-line" style="--d:0.5s">Instead of carrying this feeling forever,</p>
+            <p class="conf-line" style="--d:0.8s">I decided to tell you.</p>
+            <p class="conf-line big-conf" style="--d:1.2s">I like you.</p>
+            <p class="conf-line big-conf" style="--d:1.5s">I admire you.</p>
+            <p class="conf-line big-conf golden-text" style="--d:1.9s">And somewhere along this journey...</p>
+            <p class="conf-line biggest-conf" style="--d:2.3s">I fell for you."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Message -->
+      <div class="final-message" data-aos="fade-up">
+        <div class="final-card glass-sunset">
+          <p class="final-p">"You don't have to answer immediately.</p>
+          <p class="final-p">You don't owe me anything.</p>
+          <p class="final-p">I simply wanted you to know the truth."</p>
+          <div class="divider-leaf">🍃 ✦ 🍃</div>
+          <p class="final-p golden-text">"If your answer is yes,</p>
+          <p class="final-p">this could become the beginning of the most beautiful story.</p>
+          <p class="final-p golden-text">If your answer is no,</p>
+          <p class="final-p">I will still be grateful because meeting you made my world brighter."</p>
+        </div>
+      </div>
+
+      <!-- Thank You Button -->
+      <div class="thank-you-section" data-aos="fade-up">
+        <button class="thankyou-btn" id="thankYouBtn">
+          <span>Thank You For Reading My Story</span>
+          <span class="btn-flower">🌸</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Flower Bloom Overlay -->
+    <div class="flower-bloom" id="flowerBloom">
+      <div class="bloom-message">
+        <div class="bloom-emoji">🌸🌺🌼🌻💐🌹🌷</div>
+        <h2>Thank You, <span class="name-highlight">Mansi</span> 💛</h2>
+        <p>Every flower here bloomed because of you.</p>
+        <p class="small-note">— With all my heart 🍃</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="script.js"></script>
+
+  <!-- Password Screen -->
+<div id="password-screen">
+    <div class="box">
+        <h2>❤️ Enter Password ❤️</h2>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="checkPassword()">Open</button>
+        <p id="error"></p>
+    </div>
+</div>
+
+<script>
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+
+    if (password === "Odyssey") {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("website-content").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Wrong Password ❤️";
+    }
+}
+</script>
+
+<!-- Website Content -->
+<div id="website-content" style="display:none;">
+
+</body>
+</html>
